@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from math import *
 import xml.etree.ElementTree as et
 import argparse
@@ -173,9 +175,6 @@ for node in nodes:
 
 for way in ways:
     osm_root.append(et.Element('way', attrib = way['attrib']))
-    # print(way['nd'][0]['attrib'])
-    # if way['nd'][0]['attrib']['ref'] != way['nd'][-1]['attrib']['ref']:
-    #     print('Unclosed way: '+ way['attrib']['id'])
     way_xml = osm_root.find(".//*[@id='"+way['attrib']['id']+"']")
     for nd in way['nd']:
         way_xml.append(et.Element('nd', attrib = nd['attrib']))
